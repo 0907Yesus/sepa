@@ -117,9 +117,18 @@
             </div>
         </div>
         <!-- Componente de cursos para usuarios logueados -->
-       <!-- <app-logged-courses ></app-logged-courses>-->
-    
-    </section>
-   
-    <app-modal-detalle-cursos [showCursos]="mostrarModalDetallCursos"></app-modal-detalle-cursos>
-</div>
+        <!-- Asegurarse de que el componente se destruye y recrea cuando cambia isLoggedIn -->
+        <!-- Modificar la sección del componente logged-courses -->
+        <!-- Simplificar la condición del componente logged-courses -->
+        <!-- Al final del archivo, antes del cierre de section -->
+        <app-logged-courses 
+            *ngIf="isLoggedIn" 
+            [userId]="getUserId()"
+        ></app-logged-courses>
+        
+        <!-- Cambiar esto: -->
+        <app-modal-detalle-cursos 
+            [showCursos]="mostrarModalDetallCursos"
+            [cursoData]="descripcionCurso">
+        </app-modal-detalle-cursos>
+

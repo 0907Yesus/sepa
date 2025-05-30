@@ -44,7 +44,9 @@ import Swal from 'sweetalert2';
   ]
 })
 export class LoginComponent implements OnInit {
-  @Input() showLogin!: Observable<boolean>;
+  @Input() visible: boolean = false;
+  @Output() visibleChange = new EventEmitter<boolean>();
+  @Output() loginSuccess = new EventEmitter<any>();
   @Output() goToCourse = new EventEmitter<void>();
   @Output() mostrarModalRegistro = new EventEmitter<boolean>();
   
@@ -72,83 +74,11 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.showLogin?.subscribe(modal => {
-      this.mostrarLogin = modal;
-    });
+    // Remove the Observable subscription
   }
 
-  togglePasswordVisibility(): void {
-    this.hidePassword = !this.hidePassword;
-  }
-
-  logear() {
-    if (this.loginForm.valid) {
-      const formValues = this.loginForm.value;
-      
-      this.serviceMain.postLogin(formValues.email, formValues.pass).subscribe({
-        next: (response) => {
-          if(response.status === 'success') { 
-            Swal.fire({
-              title: 'Login exitoso',
-              text: `Bienvenido ${response.data.nombres} ${response.data.apellidos}`,
-              icon: 'success',
-            }).then((result) => {
-              if (result.isConfirmed) {
-                // Mejor manejo de localStorage
-                try {
-                  localStorage.setItem('nombre', response.data.nombres + ' ' + response.data.apellidos);
-                  localStorage.setItem('email', response.data.correo);
-                  localStorage.setItem('role', response.data.id_rol.toString());
-                  localStorage.setItem('id_usuario', response.data.registrado.toString());
-                } catch (error) {
-                  console.error('Error saving to localStorage:', error);
-                }
-                
-                if(this.openCourse) {
-                  this.goToCourse.emit();
-                }
-                this.closeModal();
-                // Usar Router en lugar de location.reload()
-                this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-                  this.router.navigate(['/current-route']);
-                });
-              }
-            });
-          } else if(response.messages === 'Contraseña incorrecta'){
-            Swal.fire({
-              title: 'Error',
-              text: `Contraseña incorrecta por favor valida que sea la misma contraseña institucional.`,
-              icon: 'error',
-            });
-          } else {
-            Swal.fire({
-              title: 'Error',
-              text: `Por favor registrese e ingrese a Moodle con sus credenciales primero para poder loguearse en la plataforma de Certificaciones.`,
-              icon: 'error',
-            });
-          }
-        },
-        error: (error) => {
-          console.error('Login error:', error);
-          Swal.fire({
-            title: 'Error',
-            text: 'Ocurrió un error durante el login',
-            icon: 'error',
-          });
-        }
-      });
-    } else {
-      // Marcar todos los campos como touched para mostrar errores
-      this.loginForm.markAllAsTouched();
-    }
-  }
-
-  closeModal(): void {
-    this.mostrarLogin = false;
-  }
-
-  clickRegister(): void {
-    this.mostrarLogin = false;
-    this.mostrarModalRegistro.emit(true);
+  closeModal() {
+    this.visible = false;
+    this.visibleChange.emit(false);
   }
 }

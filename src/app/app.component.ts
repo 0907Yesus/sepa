@@ -13,6 +13,7 @@ import { PanelMenu } from 'primeng/panelmenu';
 import { PanelModule } from 'primeng/panel';
 import { ServiceMain } from './services/service.service';
 import { RegisterComponent } from './register/register.component';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -33,7 +34,7 @@ import { RegisterComponent } from './register/register.component';
   ],
   providers:[RegisterComponent, LoginComponent]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   items: MenuItem[];
   mostrarModalLogin: EventEmitter<boolean>;
@@ -41,49 +42,47 @@ export class AppComponent implements OnInit{
   logged = false;
   nombre: string | null = '';
 
-  constructor(private serviceMain: ServiceMain, private registerComponent: RegisterComponent){
+  constructor(
+    private serviceMain: ServiceMain,
+    private registerComponent: RegisterComponent,
+    private authService: AuthService
+  ){
     this.items = [{label:'ejemplo'}];
-    this.mostrarModalLogin= new EventEmitter(false);
+    this.mostrarModalLogin = new EventEmitter(false);
   }
 
-  ngOnInit():void{
-    this.checkLoginStatus();
-  } 
-
-  checkLoginStatus(): void {
-    this.nombre = localStorage.getItem('nombre');
-    const savedUsername = localStorage.getItem('email');
-    if (savedUsername) {
+  ngOnInit():void {
+    // Verificar estado inicial
+    const savedEmail = localStorage.getItem('email');
+    const savedNombre = localStorage.getItem('nombre');
+    
+    if (savedEmail && savedNombre) {
       this.logged = true;
-    } else {
-      this.logged = false;
-    }
-  }
-
-  clickLogin():void{
-    if (this.logged) {
-      // Cerrar sesión
-      this.logout();
-    } else {
-      // Abrir modal de login
-      this.mostrarModalLogin.emit(true);
+      this.nombre = savedNombre;
+      this.authService.login({ email: savedEmail, nombre: savedNombre });
     }
   }
 
   logout(): void {
-    // Limpiar localStorage
-    localStorage.removeItem('email');
-    localStorage.removeItem('nombre');
-    // Puedes agregar más items del localStorage que necesites limpiar
-    
-    // Actualizar estado
+    localStorage.clear();
     this.logged = false;
     this.nombre = null;
+    this.authService.logout();
   }
 
-  // Método para ser llamado desde el componente de login cuando se complete el login exitosamente
-  onLoginSuccess(): void {
-    this.checkLoginStatus();
-    this.mostrarModalLogin.emit(false);
+  showLogin = false;
+
+  clickLogin(): void {
+    if (this.logged) {
+      this.logout();
+    } else {
+      this.showLogin = true;
+    }
+  }
+
+  onLoginSuccess(event: any): void {
+    this.logged = true;
+    this.nombre = event.nombres + ' ' + event.apellidos;
+    this.showLogin = false;
   }
 }

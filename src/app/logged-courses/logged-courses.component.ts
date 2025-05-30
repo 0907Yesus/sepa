@@ -19,7 +19,7 @@ interface MisCursosResponse {
 }
 
 @Component({
-  selector: 'app-mis-cursos',
+  selector: 'app-logged-courses',
   standalone: true,
   imports: [
     CommonModule,

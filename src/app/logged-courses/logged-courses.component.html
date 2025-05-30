@@ -1,53 +1,73 @@
-<!-- Carrusel de cursos para usuarios logueados -->
-<div class="contenedor-cursos-logueados" *ngFor="let nodo of nodos; index as i;">
-    <div class="contenedor-encabezadoCarousel" [style]="nodo.colorFondo">
-        <div class="contenedorTamaño-cursos-titulo">
-            <div class="iconoYencabezado">
-                <img [src]="nodo.icono" class="contenedor-cursos-incono">
-                <h1 [style]="nodo.nameColorLetra" class="contenedor-cursos-titulo"> {{nodo.name}} - Versión Usuario Logueado</h1>
-            </div>
-        </div>
-        <p-carousel class="tamaño-contendedor-carrusel" [value]="nodo.dataCarousel" [numVisible]="3"
-            [numScroll]="1" [responsiveOptions]="responsiveOptions">
-            <ng-template pTemplate="previousicon">
-                <img [src]="nodo.iconoPrevious" style="width: 98%;height: 98%">
-            </ng-template>
-            <ng-template pTemplate="nexticon">
-                <img [src]="nodo.iconoNext" style="width: 98%;height: 98%">
-            </ng-template>
-            <ng-template let-curso #item>
-                <div class="tamaño-contenedor-card"
-                    style="padding: 20px; width: 100%;height: auto; overflow: hidden;">
-                    <div class="tamaño-card-cursos">
-                        <div class="relative mx-auto">
-                            <!-- Usar la URL de imagen del endpoint -->
-                            <img [src]="curso.url_imagen_course" [alt]="curso.fullname" class="w-full rounded-border" />
-                            <!-- Indicador de que el usuario está logueado -->
-                            <div class="logged-badge" style="position: absolute; top: 10px; right: 10px; background: green; color: white; padding: 5px; border-radius: 5px; font-size: 10px;">
-                                ACCESO COMPLETO
-                            </div>
-                        </div>
-                        <div class="burbuja-tituloInformacion">
-                            <div class="burbuja-tituloInformacion-posicionElementos">
-                                <div class="tamañoLetra-titulo "
-                                    style="font-family: 'BrownStd-Bold';font-size: 14px">{{curso.fullname}}</div>
-                                <div class="tamañoLetra-informacion"
-                                    style="font-family: 'BrownStd-Bold';font-size: 12px;
-                                    float: right;margin-left:auto;margin-right: 10px;color: rgb(148, 185, 47);cursor: pointer;"
-                                    (click)="clickModalCursos(nodo, curso, unificacion)">Más información
-                                 <i class="pi pi pi-plus-circle" style="color: rgb(148, 185, 47)"></i>
-                                </div>
-                            </div>
-                            <!-- Botón adicional para usuarios logueados -->
-                            <div style="text-align: center; margin-top: 10px;">
-                                <button class="btn-acceder" style="background: rgb(112, 176, 9); color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;">
-                                    Acceder al Curso
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </ng-template>
-        </p-carousel>
+<div class="logged-courses-container">
+    <h2>Mis Cursos</h2>
+    
+    <!-- Loading state -->
+    <div *ngIf="loading" class="loading-container">
+      <p>Cargando cursos...</p>
     </div>
-</div>
+    
+    <!-- Error state -->
+    <div *ngIf="error && !loading" class="error-container">
+      <p>{{ error }}</p>
+      <button pButton type="button" label="Reintentar" (click)="cargarMisCursos()"></button>
+    </div>
+    
+    <!-- Courses carousel -->
+    <div *ngIf="!loading && !error && misCursos.length > 0">
+      <p-carousel 
+        [value]="misCursos" 
+        [numVisible]="3" 
+        [numScroll]="1" 
+        [responsiveOptions]="responsiveOptions"
+        [showIndicators]="true"
+        [showNavigators]="true">
+        
+        <ng-template pTemplate="item" let-curso>
+          <div class="course-card-wrapper">
+            <p-card [style]="{'margin': '10px'}">
+              <ng-template pTemplate="header">
+                <img 
+                  [src]="curso.url_imagen_course" 
+                  [alt]="curso.fullname"
+                  class="course-image"
+                  onerror="this.src='/assets/img/default-course.png'" />
+              </ng-template>
+              
+              <ng-template pTemplate="title">
+                {{ curso.fullname }}
+              </ng-template>
+              
+              <ng-template pTemplate="content">
+                <p>{{ curso.descripcion | slice:0:100 }}{{ curso.descripcion.length > 100 ? '...' : '' }}</p>
+              </ng-template>
+              
+              <ng-template pTemplate="footer">
+                <div class="course-actions">
+                  <button 
+                    pButton 
+                    type="button" 
+                    label="Ver más" 
+                    icon="pi pi-info-circle"
+                    class="p-button-outlined"
+                    (click)="verMasInformacion(curso)">
+                  </button>
+                  <button 
+                    pButton 
+                    type="button" 
+                    label="Acceder" 
+                    icon="pi pi-external-link"
+                    (click)="accederCurso(curso)">
+                  </button>
+                </div>
+              </ng-template>
+            </p-card>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+    
+    <!-- No courses state -->
+    <div *ngIf="!loading && !error && misCursos.length === 0" class="no-courses-container">
+      <p>No tienes cursos asignados.</p>
+    </div>
+  </div>

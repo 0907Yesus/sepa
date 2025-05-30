@@ -23,8 +23,9 @@
 </div>
 
 <!--modulo main -->
-<!--<app-main></app-main>-->
-<app-main [isLoggedIn]="logged"></app-main>
+<!-- Cambiar esta línea -->
+<app-main></app-main>
+<!--<app-main [isLoggedIn]="logged"></app-main>-->
  <!-- contenedor lineas de atencion  -->
     <div class="contenedor-lineaAtencion">
         <div class="flex flex-wrap justify-content-center gap-3 ">
@@ -70,6 +71,8 @@
         </div>
     </div>
 <!--modal login-->
-<!--<app-login  [showLogin]="mostrarModalLogin" ></app-login>-->
-<app-login [showLogin]="mostrarModalLogin" (loginSuccess)="onLoginSuccess()"></app-login>
+<app-login
+  [(visible)]="showLogin"
+  (loginSuccess)="onLoginSuccess($event)">
+</app-login>
 
