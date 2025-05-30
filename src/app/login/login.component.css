@@ -1,0 +1,174 @@
+.inicio__content__login {
+  font-family: 'BrownStd-Bold';
+  font-weight: bold;
+  background-color: white !important; /* Fuerza fondo blanco */
+  color: #333 !important; /* Texto oscuro */
+}
+
+/* Fuerza el fondo blanco del dialog de login */
+:host ::ng-deep .p-dialog {
+  background-color: white !important;
+  color: #333 !important;
+}
+
+:host ::ng-deep .p-dialog .p-dialog-content {
+  background-color: white !important;
+  color: #333 !important;
+  overflow-y: hidden
+}
+
+:host ::ng-deep .p-dialog .p-dialog-header {
+  background-color: white !important;
+  color: black !important;
+}
+
+.card {
+  padding: 5px;
+  gap: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: 'BrownStd-Light';
+  font-weight: bold;
+  font-size: 13px;
+  background-color: transparent;
+}
+
+label {
+  color: rgb(15, 15, 15) !important;
+  font-weight: bold;
+  background-color: transparent !important;
+}
+
+/* Estilos específicos para floatlabel */
+:host ::ng-deep .p-floatlabel label {
+  color: rgb(15, 15, 15) !important;
+  font-weight: bold;
+  background-color: transparent !important;
+}
+
+/* formulario usuario se valida con correo */
+input {
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: #000;
+  width: 300px;
+  border-radius: 0px;
+  background-color: white !important; /* Fondo blanco forzado */
+  color: #333 !important; /* Texto oscuro */
+  padding: 4px;
+}
+
+input:focus {
+  border-color: #000;
+  outline: 0;
+  background-color: white !important;
+  color: #333 !important;
+}
+
+/* Estilos específicos para p-inputtext */
+:host ::ng-deep .p-inputtext {
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: #000 !important;
+  width: 300px;
+  border-radius: 0px;
+  background-color: white !important;
+  color: #333 !important;
+  padding: 4px;
+}
+
+:host ::ng-deep .p-inputtext:focus {
+  border-color: #000 !important;
+  outline: 0;
+  background-color: white !important;
+  color: #333 !important;
+  box-shadow: none !important;
+}
+
+/* formulario contraseña */
+:host ::ng-deep .p-password input {
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: #000;
+  width: 300px;
+  border-radius: 0px;
+  background-color: white !important;
+  color: #333 !important;
+  padding: 4px;
+}
+
+:host ::ng-deep .p-password input:focus {
+  border-color: #000;
+  outline: 0;
+  background-color: white !important;
+  color: #333 !important;
+  box-shadow: none !important;
+}
+
+/* Estilos para el contenedor del password */
+:host ::ng-deep .p-password {
+  background-color: transparent !important;
+}
+
+/* contenedores de botones iniciar sesion y registrarme */
+.content__botones__form__iniciarSesion, 
+.content__botones__form__iniciarSesion__registrarme {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 4px;
+  font-family: 'BrownStd-Light';
+  background-color: transparent;
+  margin-top: 10px
+}
+
+/* Asegurar que el formulario tenga fondo blanco */
+.inicio__content__login form {
+  background-color: white !important;
+  color: #333 !important;
+}
+
+/* Estilos para párrafos y texto */
+.inicio__content__login p {
+  color: #333 !important;
+  background-color: transparent;
+}
+
+/* Estilos adicionales para botones */
+:host ::ng-deep .p-button {
+  background-color: rgb(205, 66, 134) !important;
+  border: none !important;
+  color: white !important;
+}
+
+:host ::ng-deep .p-button.p-button-text {
+  background-color: transparent !important;
+  color: rgb(205, 66, 134) !important;
+}
+
+:host ::ng-deep .p-button:not(.p-button-text) {
+  background-color: rgb(205, 66, 134) !important;
+  border-color: rgb(205, 66, 134) !important;
+}
+
+/* validaciones */
+.text-error {
+  font-size: 12px;
+  color: red !important;
+  background-color: transparent;
+}
+
+/* Asegurar que todos los elementos tengan el fondo correcto */
+.inicio__content__login * {
+  background-color: inherit;
+}
+
+/* Override para elementos específicos que necesitan fondo blanco */
+.inicio__content__login input,
+.inicio__content__login .p-inputtext,
+.inicio__content__login .p-password input {
+  background-color: white !important;
+}
+
+

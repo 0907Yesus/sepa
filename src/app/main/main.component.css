@@ -1,0 +1,503 @@
+/* Asegurar fondo blanco en toda la aplicación */
+html, body {
+    background-color: white !important;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Fondo blanco para el componente raíz */
+:host {
+    display: block;
+    background-color: white;
+    min-height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.inicio {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
+    background-color: white; /* Agregado */
+}
+
+/* primer contenedor imagen e icono */
+.primerContenedor {
+    width: 100%;
+    /*height: 35vw;*/
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: center;
+    position: relative;
+    background: white;
+}
+
+.card__icono--uppercase {
+    position: absolute;
+    top: 82%;
+    left: 77%;
+    width: 35px;
+    height: 35px;
+    background-size: contain;
+}
+
+/* segundo contenedor imagen SEPA y texto informativo */
+.segundoContenedor {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background-color: white; /* Agregado */
+}
+
+.segundoContenedor img {
+    width: 45%;
+    height: 100%;
+    padding: 10px;
+}
+
+.imagen-sepa {
+    width: 75%;
+    height: 35vw;
+}
+
+.segundoContenedor .texto {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+h2 {
+    font-family: 'BrownStd-Bold';
+    font-weight: normal;
+    font-size: 17px;
+}
+
+p {
+    font-family: 'BrownStd-Bold';
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.contInformacion {
+    font-family: 'BrownStd-Light';
+    font-weight: normal;
+    font-size: 15px;
+    min-height: 250px;
+}
+
+/* contenedor targetas cursos principales  */
+.conte_certy {
+    width: 100%;
+    background: white;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    margin-top: 2%;
+    position: relative;
+    margin-top: 100px;
+    z-index: 1;
+}
+
+.contenedor-cursos-principales {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5%;
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: -4%;
+    background-color: white; /* Agregado */
+}
+
+.tamaño-card {
+    position: relative;
+    width: 270px;
+    height: 300px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.titulo-card {
+    position: absolute;
+    top: 60%;
+    left: 12%;
+    color: rgb(150, 241, 4);
+    font-size: 14px;
+    font-family: 'BrownStd-Light';
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.subtitulo-card {
+    position: absolute;
+    top: 70%;
+    left: 12%;
+    display: flex;
+    color: white;
+    font-size: 18px;
+    font-family: 'BrownStd-Bold';
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.icono {
+    position: absolute;
+    top: 84%;
+    left: 80%;
+    width: 35px;
+    height: 35px;
+    background-image: url(../../assets/img/iconos_sepa/SEPA_ICO_FLECHA_MAGENTA.png);
+    background-size: contain;
+    overflow: hidden;
+}
+
+.tercerContenedor {
+    width: 100%;
+    height: 9rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    background-color: white; /* Agregado */
+}
+
+.tamaño-letra {
+    font-size: 28px;
+}
+
+/* selec */
+:host ::ng-deep.p-select {
+    border-color: rgb(250, 246, 246);
+}
+
+:host ::ng-deep.p-select-label {
+    font-family: 'BrownStd-Bold';
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* carousel */
+.contenedor-cursos {
+    width: 100%;
+    /* height: 58vh; */
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white; /* Agregado */
+}
+
+.contenedor-encabezadoCarousel {
+    width: 70vw;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    display: flex;
+    border-radius: 20px;
+    position: relative;
+    background-color: white; /* Agregado */
+}
+
+.contenedorTamaño-cursos-titulo {
+    width: 100%;
+    height: 20%;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 2%;
+    margin-bottom: 20px;
+}
+
+.iconoYencabezado {
+    width: 60%;
+    height: 5vw;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+}
+
+.contenedor-cursos-incono {
+    width: 15%;
+    height: 5vw;
+    margin-left: 20px;
+    margin-top: 5px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.contenedor-cursos-titulo {
+    font-family: 'BrownStd-Bold';
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 5vw;
+    font-size: 30px;
+}
+
+.contenedor-cursos-titulo::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: rgb(248, 245, 245);
+    margin-top: 2%;
+}
+
+.tamaño-contendedor-carrusel {
+    max-width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    padding: 5% 10% 5% 0%;
+    margin-top: 8%;
+}
+
+/* botones antes next y previous */
+:host ::ng-deep.p-carousel-prev-button {
+    position: absolute;
+    top: 1%;
+    right: 7%;
+}
+
+:host ::ng-deep.p-carousel-next-button {
+    position: absolute;
+    top: 1%;
+    right: 3%;
+}
+
+/* scrull boton para dezplazarla imagenes */
+:host ::ng-deep .p-carousel-indicator-active .p-carousel-indicator-button {
+    background-color: white;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+}
+
+:host ::ng-deep .p-carousel-indicator-button {
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+}
+
+.tamaño-card-cursos {
+    aspect-ratio: 1 / 1;
+    border-radius: 8%;
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+}
+
+.tamaño-card-cursos img {
+    width: 99%;
+    height: 250px;
+    object-fit: cover;
+    position: relative
+}
+
+.burbuja-tituloInformacion {
+    background-image: url(../../assets/img/iconos_sepa/ELEMENTOS_GRAFICOS-28.png);
+    width: 101%;
+    height: 100%;
+    object-fit: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    top: -70px;
+    margin-left: -2px;
+}
+
+.burbuja-tituloInformacion-posicionElementos {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(50px);
+    margin-left: 10px;
+}
+
+@media (min-width: 768px)and (max-width: 1194px) {
+    .tamaño-card {
+        width: 250px;
+        height: 280px;
+        padding: 10px;
+        margin-top: 10%;
+    }
+    .titulo-card {
+        font-size: 12px;
+    }
+    .subtitulo-card {
+        font-size: 15px;
+    }
+    .icono {
+        width: 30px;
+        height: 30px;
+        top: 80%;
+        left: 77%;
+        position: absolute;
+    }
+    .contenedor-cursos-principales {
+        gap: 3%;
+    }
+}
+@media (max-width: 540px) {
+    .tamaño-card {
+        width: 215px;
+        height: 225px;
+        padding: 10px;
+        margin-top: 10%;
+    }
+    .titulo-card {
+        font-size: 10px;
+    }
+    .subtitulo-card {
+        font-size: 14px;
+    }
+    .icono {
+        width: 25px;
+        height: 25px;
+        top: 80%;
+        left: 77%;
+        position: absolute;
+    }
+    .card__icono--uppercase {
+        width: 25px;
+        height: 25px;
+        top: 80%;
+        left: 77%;
+        position: absolute;
+    }
+    .segundoContenedor {
+        display: flex;
+        flex-direction: column;
+    }
+    .segundoContenedor h2 {
+        font-size: small;
+    }
+    .segundoContenedor p {
+        font-size: 11px;
+    }
+    .tercerContenedor h2 {
+        font-size: 14px;
+        padding: 10px;
+    }
+    .tercerContenedor p {
+        font-size: 11px;
+    }
+    .tamaño-letra {
+        font-size: 26px;
+    }
+    .contenedorTamaño-cursos-titulo h1 {
+        font-size: 18px;
+    }
+    .tamañoLetra-titulo {
+        font-size: 10px !important;
+        position: absolute !important;
+        top: -20px !important;
+    }
+    .tamañoLetra-informacion {
+        font-size: 10px !important;
+        position: relative !important;
+        top: 5px !important;
+    }
+    .tamaño-contenedor-card {
+        width: 100% !important;
+    }
+    .tamaño-card-cursos {
+        width: 75% !important;
+        margin-top: 10%;
+        height: 370px !important;
+    }
+    .contenedor-encabezadoCarousel {
+        width: 90% !important;
+        /* height: 520px !important; */
+        margin-top: 20px;
+        background-color: white; /* Cambiado de aqua a white */
+    }
+    :host ::ng-deep .p-carousel-indicator-active .p-carousel-indicator-button {
+
+        height: 15px;
+        margin-top: -90px !important;
+    }
+    :host ::ng-deep .p-carousel-indicator-button {
+
+        margin-top: -90px !important;
+    }
+}
+@media(max-width: 390px) {
+    .contenedorTamaño-cursos-titulo h1 {
+        font-size: 16px;
+    }
+    .tamaño-contenedor-card {
+        width: 100% !important;
+    }
+    .tamaño-card-cursos {
+        width: 60% !important;
+        margin-top: 10%;
+        height: 370px !important;
+    }
+    .contenedor-encabezadoCarousel {
+        width: 80% !important;
+        height: 520px !important;
+        margin-top: 20px;
+        background-color: white; /* Cambiado de aqua a white */
+    }
+    :host ::ng-deep .p-carousel-indicator-active .p-carousel-indicator-button {
+        height: 15px;
+        margin-top: -90px !important;
+    }
+    :host ::ng-deep .p-carousel-indicator-button {
+        margin-top: -90px !important;
+    }
+}
+@media(max-width: 360px) {
+    .contenedorTamaño-cursos-titulo h1 {
+        font-size: 16px;
+    }
+    .tamaño-contenedor-card {
+        width: 100% !important;
+        gap: 5px !important;
+    }
+    .tamaño-card-cursos {
+        width: 55% !important;
+        margin-top: 10%;
+        height: 370px !important;
+    }
+    .tamañoLetra-titulo {
+        font-size: 10px !important;
+        position: absolute !important;
+        top: -20px !important;
+    }
+    .tamañoLetra-informacion {
+        font-size: 10px !important;
+        position: relative !important;
+        top: 5px !important;
+    }
+}
+@media (max-width: 768px) {
+    .tamaño-card-cursos {
+        margin-top: 8%;
+    }
+}
+@media (max-width: 820px) {
+    .tamaño-card-cursos {
+        margin-top: 10% !important;
+    }
+}

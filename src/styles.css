@@ -1,0 +1,113 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'BrownStd-Bold';
+    src:url(assets/fonts/BrownStd-Bold.ttf) format('truetype');
+} 
+
+@font-face {
+    font-family: 'BrownStd-Light';
+    src: url(assets/fonts/BrownStd-Light.ttf) format('truetype'); /* Ruta del archivo de fuente */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Brown-BoldItalic';
+    src: url(assets/fonts/Brown-BoldItalic.ttf) format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Brown-Italic';
+    src: url(assets/fonts/Brown-Italic.ttf) format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BrownLight-Regular';
+    src: url(assets/fonts/BrownLight-Regular.ttf) format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BrownMedium-Regular';
+    src: url(assets/fonts/BrownMedium-Regular.ttf) format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'primeicons';
+  src: url('/assets/fonts/primeicons/primeicons.woff2') format('woff2'),
+       url('/assets/fonts/primeicons/primeicons.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.pi {
+  font-family: 'primeicons' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: black !important;
+}
+
+  
+
+/* Pantallas grandes */
+
+/* Pantallas móviles */
+@media (max-width: 767px) {
+  .contenedor {
+    width: 100%;
+    padding: 10px;
+  }
+    .body {
+    font-size: 16px;
+  }
+}
+/* Pantallas medianas (Tablets, laptops pequeñas) */
+@media (max-width: 1024px) and (min-width: 767px) {
+  .contenedor {
+    width: 90%;
+  }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1024px) {
+  .contenedor {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+
+@media (max-width: 375px) {
+  .segundoContenedor{
+  display: flex;
+  flex-direction: row;
+ }
+
+}
+
+.swal2-container {
+  z-index: 10000 !important;
+}
+
+.swal-high-zindex {
+  z-index: 10001 !important;
+}

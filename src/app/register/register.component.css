@@ -1,0 +1,149 @@
+.inicio__content__register {
+  font-family: 'BrownStd-Bold';
+  background-color: white !important; /* Fuerza fondo blanco */
+  color: #333 !important; /* Texto oscuro */
+}
+
+/* Fuerza el fondo blanco del dialog */
+:host ::ng-deep .p-dialog {
+  background-color: white !important;
+  color: #333 !important;
+}
+
+:host ::ng-deep .p-dialog .p-dialog-content {
+  background-color: white !important;
+  color: #333 !important;
+}
+
+:host ::ng-deep .p-dialog .p-dialog-header {
+  background-color: white !important;
+  color: black !important;
+}
+
+.card {
+  padding: 1px;
+  gap: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: 'BrownStd-Light';
+  font-weight: bold;
+  font-size: 13px;
+  background-color: transparent;
+}
+
+.content__boton__form__registrate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'BrownStd-Light';
+  gap: 4px;
+}
+
+/* Estilos para inputs normales */
+input {
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: grey;
+  width: 300px;
+  border-radius: 0px;
+  padding: 4px;
+  background-color: white !important; /* Fondo blanco forzado */
+  color: #333 !important; /* Texto oscuro */
+}
+
+input:focus {
+  border-color: grey;
+  outline: 0;
+  background-color: white !important;
+  color: #333 !important;
+}
+
+/* Estilos específicos para p-password */
+:host ::ng-deep .p-password input {
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: grey;
+  width: 300px;
+  border-radius: 0px;
+  padding: 4px;
+  background-color: white !important;
+  color: #333 !important;
+}
+
+:host ::ng-deep .p-password input:focus {
+  border-color: grey;
+  outline: 0;
+  background-color: white !important;
+  color: #333 !important;
+}
+
+/* Estilos para floatlabel */
+:host ::ng-deep .p-floatlabel label {
+  color: #666 !important;
+  background-color: transparent !important;
+}
+
+:host ::ng-deep .p-floatlabel input {
+  background-color: white !important;
+  color: #333 !important;
+}
+
+/* Estilos para el contenedor de botones */
+.content__boton__boton_p__login, 
+.content__boton__form__registrate {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.content__boton__form__registrate {
+  padding: 18px;
+}
+
+.content__boton__boton_p__login {
+  font-family: 'BrownStd-Light';
+  font-size: 14px;
+}
+
+/* Estilos para párrafos */
+p {
+  font-family: 'BrownStd-Light';
+  font-size: 12px;
+  margin: 15px;
+  text-align: center;
+  color: #333 !important;
+  background-color: transparent;
+}
+
+.tamaño-letra-tieneCuenta {
+  font-size: 14px;
+  color: #333 !important;
+}
+
+/* Validaciones */
+.text-error {
+  font-size: 12px;
+  color: red !important;
+  background-color: transparent;
+}
+
+/* Asegurar que el formulario tenga fondo blanco */
+.inicio__content__register__form {
+  background-color: white !important;
+  color: #333 !important;
+}
+
+/* Estilos adicionales para el botón */
+:host ::ng-deep .p-button {
+  background-color: rgb(205, 66, 134) !important;
+  border: none !important;
+  color: white !important;
+}
+
+:host ::ng-deep .p-button.p-button-text {
+  background-color: transparent !important;
+  color: rgb(205, 66, 134) !important;
+}

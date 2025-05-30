@@ -1,0 +1,35 @@
+<div class="card flex justify-center align-items-center" *ngIf="curso " style="margin-right: 20%;">
+    <p-dialog class="inicio_content" class="flex flex-wrap justify-content-center " [(visible)]="visible" [modal]="true"
+        [breakpoints]="{ '1199px': '75vw','820px': '75vw','768px': '70vh','360px':'100vh','375px':'100vh' }" [style]="{ width: '45%', margin:'5%'}"
+        [draggable]="false" [resizable]="false">
+        <!-- contenedor imagen subcursos -->
+        <div  class="content-card-imagen" class="flex flex-wrap justify-content-center" [style]="{ width: '100%', height:'45%'}">
+            <img class="card-imagenCurso" [style]="{ width: '100%', height:'100%'}"
+            [src]="curso.imagen" alt="">
+        </div>
+        <!-- contenedor icono y titulo principal -->
+        <div class="card flex justify-center"  [style]="{ width: '100%', height:'10%',position:'relative'}">
+            <div class="icono-Titulo-Curso"  [style]="curso.colorFondo">
+                <div class="flex  align-items-center" style="width: 40px; height:35px;margin-left:5%;">
+                    <img [src]="curso.icono" alt="" [style]="{ width: '100%', height:'100%'}">
+                </div>
+                <div  style="width: 30%; height:3vw">
+                    <h1 class="titulo_curso" style="font-family:'BrownStd-Bold';font-weight:' bold';font-size:16px;
+                    white-space: nowrap;align-items: center;display: flex;margin-top: 10%;color: aliceblue;">
+                        {{curso.name}}</h1>
+                </div>
+            </div>
+        </div>
+        <!-- contenedor titulo subcurso -informacion- imagen inscribirme -->
+        <div  style="width: 100%; height:40%;  display: flex;flex-direction: row; overflow: hidden;">
+            <div style="width: auto; height: auto;padding: 20px; margin-top: 40px">
+                <h1 class="titulo-subcurso" style="font-family:'BrownStd-Bold';padding: 10px;font-weight:' bold';font-size:20px;">{{curso.fullname}}</h1>
+                <p class="informacion">{{curso.informacionCurso}}</p>
+            </div><!--
+            <div style="width: 30%; height:auto">
+                <img class="imagen-suscribirse" src="/assets/img/iconos_sepa/SEPA_BTN_INSCRIBIRME.png" alt="" 
+                    style=" width:65%; height:50%;margin-left: 60px;margin-top: 110px;">
+            </div>-->
+        </div>
+    </p-dialog>
+</div>

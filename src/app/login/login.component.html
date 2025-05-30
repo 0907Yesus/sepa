@@ -1,0 +1,71 @@
+<div class="inicio__content__login" *ngIf="mostrarLogin">
+    <p-dialog class=" flex justify-center" [modal]="true" [(visible)]="mostrarLogin"
+        [style]="{ width: '32rem', height:'19rem',padding:'1px',color:'black'}">
+        <ng-template pTemplate="header">
+            <div style="text-align: center; width: 100%;font-size: 30px">Inicio de sesión</div>
+        </ng-template>
+        <!-- formulario reactivo-->
+        <form class="inicio__content__login__formulario" [formGroup]="loginForm" >
+            <div class="card flex justify-center">
+                <p-floatlabel variant="in">
+                    <input  pInputText id="email"
+                            autocomplete="on" 
+                            formControlName="email"
+                            type="email" 
+                            pTooltip="Ingresa correo"
+                            tooltipPosition="top" >
+                    <label for="email">Usuario:</label>
+                </p-floatlabel>
+                 <span *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-error">
+                     Correo válido:
+                     <br>Ejemplo usuario&#64;ejemplo.com
+                    </span>
+            </div>
+            <div class="card flex justify-center relative">
+              <p-floatlabel variant="in" class="w-full">
+                <input
+                  pInputText
+                  id="password"
+                  [type]="hidePassword ? 'password' : 'text'"
+                  formControlName="pass"
+                  pTooltip="Ingresa Contraseña"
+                  tooltipPosition="top"
+                  class="pr-10 w-full" 
+                /><!-- Ajuste para el ícono a la derecha -->
+                <label for="password">Contraseña:</label>
+              </p-floatlabel>
+            
+              <!-- Ícono de ojo (puede ser un botón o un ícono con PrimeIcons) -->
+              <button
+                type="button"
+                (click)="togglePasswordVisibility()"
+                class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              >
+                <i
+                  class="pi"
+                  [ngClass]="hidePassword ? 'pi-eye-slash' : 'pi-eye'"
+                ></i>
+              </button>
+            
+              <span *ngIf="loginForm.get('pass')?.touched" class="text-error"></span>
+            </div>
+
+            <div class="content__botones__form__iniciarSesion">
+                <p-button label="Iniciar Sesion" [style]="{background: 'rgb(205 66 134)', border:'none', height:'2rem'}"
+                    (click)="logear()"
+                    type="submit"
+                    [disabled]="loginForm.invalid"
+                      />
+            </div>
+        </form>
+        <div>
+            <div class="content__botones__form__iniciarSesion__registrarme">
+                <p-button label="Registrarme" variant="text" severity="secondary" (click)="clickRegister()"
+                    [style]="{ height:'2rem'}" />
+            </div>
+        </div>
+    </p-dialog>
+</div>
+
+
+<app-register [showRegister]="mostrarModalRegistro"></app-register>

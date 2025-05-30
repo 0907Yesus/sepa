@@ -1,0 +1,89 @@
+<div class="inicio__content__register" *ngIf="mostrarModalRegistro"> 
+    <p-dialog   [modal]="true" [(visible)]="mostrarModalRegistro" [style]="{ width: '33rem', height:'31rem'}" >
+        <ng-template pTemplate="header">
+            <div style="text-align: center; width: 100%;font-size: 30px;color:black">Registrate</div>
+          </ng-template>
+        <!--contenedor fomulario para registro usuario-->
+            <form  class="inicio__content__register__form" [formGroup]="registerForm"  >
+                <!-- email -->
+                <div class="card flex justify-center ">
+                    <p-floatlabel variant="in">
+                        <input pInputText 
+                        id="registro-email"  
+                        autocomplete="on"  
+                        formControlName="email"
+                        pTooltip="Ingresa correo"
+                        tooltipPosition="top">
+                        <label for="email">Email</label>
+                    </p-floatlabel>
+                     <span *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-error">
+                     Ingresa un correo válido:
+                     <br>Ejemplo usuario&#64;ejemplo.com
+                    </span>
+                </div>
+                <div class="card flex justify-center ">
+                    <p-floatlabel variant="in">
+                        <input pInputText id="registro-email-repetir" 
+                         autocomplete="on"  
+                         formControlName="emailRepetir">
+                        <label for="email">Ingresa tu email de nuevo</label>
+                    </p-floatlabel>
+                    <span *ngIf=" registerForm.errors && registerForm.errors['emailNoMatch']  " class="text-error">
+                        Email no coincide
+                    </span>
+                </div>
+                <!-- password -->
+             <div class="card flex  justify-center" >
+                <p-iftalabel  >
+                    <p-password  [feedback]="false" 
+                    inputId="registro-password" 
+                    formControlName="password" 
+                    [toggleMask]="true"
+                    pTooltip="Ingresa Contraseña"
+                    tooltipPosition="top"/>
+                    <label for="Password">Contraseña</label>
+                </p-iftalabel>
+                <span *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-error">
+                        Ingresa minimo 10 caracteres.
+                        <br> sin espacios,se permite números y letras.
+                    </span>
+            </div>
+            <div class="card flex  justify-center" >
+                <p-iftalabel  >
+                    <p-password  [feedback]="false"   inputId="registro-password-repetir" formControlName="passwordRepetir" [toggleMask]="true"/>
+                    <label for="Password">Escribe tu contraseña de nuevo</label>
+                </p-iftalabel>
+                  <span *ngIf=" registerForm.errors && registerForm.errors['passwordNoMatch']  " class="text-error">
+                        Contraseña no coincide
+                    </span>
+            </div>
+             <div class="content__boton__form__registrate">
+                <p-button 
+                label="Registrate" [style]="{background: 'rgb(205 66 134)', border:'none',height:'2rem',width:'9rem' }" 
+                type="submit" 
+                [disabled]="registerForm.invalid"
+                (click)="register()" />
+             
+            </div>
+             
+        </form>
+<!---->
+           
+            <div class="content__boton__boton_p__login">
+                <p class="tamaño-letra-tieneCuenta">¿Ya tienes una cuenta?</p>
+                <p-button label="Iniciar Sesion" 
+                variant="text" severity="secondary" 
+                [style]="{color: 'rgb(205 66 134)'}"
+                 (click)="clickLogin()" 
+                 class="boton__iniarSesion"
+                  />
+            </div>
+            <div>
+                <p>*Al iniciar sesión, aceptas nuestros terminos de Uso, recibiras
+                    <br> correos electronicos y actualizaciones al reconocer 
+                    <br>que leiste nuestra Politica de Privacidad.
+                </p>
+            </div>
+            
+        </p-dialog>
+</div>

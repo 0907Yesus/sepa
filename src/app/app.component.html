@@ -1,0 +1,75 @@
+<!-- contenedor encabezado-menu-->
+<div class="card">
+     <!--barra de herramientas con logo y botones de seleccion-->
+    <p-toolbar class="content_card" [style]="{ border: 'none'}">
+         <!--logo andina-->
+        <ng-template #start>
+             <img class="content-imgLogo" src="../assets/img/logo_andina/logo_andina.png" alt="" style=" width: 250px;
+    height: 70px;background-size: contain;">
+        </ng-template>
+         <!--botones de seleccion-->
+        <ng-template #end >
+                <p-button  class="boton-cursos" label="Cursos" text  severity="contrast"/>
+                <p-button  label="Guia de Navegación" text  severity="contrast"/>
+                <p-button 
+                    [label]="logged ? 'Cerrar Sesión' : 'Inicio Sesión'" 
+                    class="boton-login" 
+                    [rounded]="true" 
+                    [style]="{background: 'rgb(205 66 134)', border:'none',width:'9rem',height:'2rem' }" 
+                    (click)="clickLogin()" 
+                    clickable />
+        </ng-template>
+    </p-toolbar>
+</div>
+
+<!--modulo main -->
+<!--<app-main></app-main>-->
+<app-main [isLoggedIn]="logged"></app-main>
+ <!-- contenedor lineas de atencion  -->
+    <div class="contenedor-lineaAtencion">
+        <div class="flex flex-wrap justify-content-center gap-3 ">
+            <div class="imagen-logoAndina-lineaAtencion" style="width: 240px;height: 60px;">
+                <img src="./../../assets/img/logo_andina/Logo_Areandina.png" alt="LogoAreandina"
+                    style="width:100%;height: 100%;margin: 10px;">
+            </div>
+            <div class="icons">
+                <a href="https://www.facebook.com/areandina?ref=hl" target="_blank">
+                    <img class="icon" src='./../../assets/img/iconos_redesSociales/ico_fb.svg' alt='facebook'
+                        style="width: 20px;height: 20px;">
+                </a>
+                <a href="https://www.instagram.com/areandina/" target="_blank">
+                    <img class="icon" src='./../../assets/img/iconos_redesSociales/ico_instagram.svg' alt='instagram'
+                        style="width: 18px;height: 18px;">
+                </a>
+                <a href="https://co.linkedin.com/school/fundacion-universitaria-del-area-andina/" target="_blank">
+                    <img class="icon" src='./../../assets/img/iconos_redesSociales/ico_linkedin.svg' alt='linkedin'
+                        style="width: 20px;height: 20px;">
+                </a>
+                <a href="https://twitter.com/areandina" target="_blank">
+                    <img class="icon" src='./../../assets/img/iconos_redesSociales/ico_X.svg' alt='x'
+                        style="width: 18px;height: 18px;">
+                </a>
+                <a href="https://www.youtube.com/user/areandinatv" target="_blank">
+                    <img class="icon" src='./../../assets/img/iconos_redesSociales/ico_youtube.svg' alt='youtube'
+                        style="width: 20px;height: 22px;">
+                </a>
+            </div>
+        </div>
+        <div class="flex justify-content-around flex-wrap">
+            <span>
+                <img src="./../../assets/img/iconos_redesSociales/ico_linea_atencion.svg" alt="lineaAtencion"
+                    style="width: 45px;height: 45px;">
+                <p class="tamañoLetra-lineaAtencion-titulo" style="color: white">LÍNEAS DE ATENCIÓN</p>
+            </span>
+            <p class="tamañoLetra-lineaAtencion" style="color: white;font-family:'BrownStd-Light';font-weight: normal;font-size: 16px;">
+                Línea gratuita nacional:018000 180099
+                <br>Bogotá: (57+1) 744 91 91
+                <br>Pereira:
+                <br>Valledupar:(57+8)589 78 79
+            </p>
+        </div>
+    </div>
+<!--modal login-->
+<!--<app-login  [showLogin]="mostrarModalLogin" ></app-login>-->
+<app-login [showLogin]="mostrarModalLogin" (loginSuccess)="onLoginSuccess()"></app-login>
+
